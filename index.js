@@ -1,5 +1,6 @@
 var Word = require("./word.js");
 var inquirer = require("inquirer");
+var colors = require("colors");
 
 // Set up variables
 var letterArray = "abcdefghijklmnopqrstuvwxyz";
@@ -21,7 +22,7 @@ var guessesLeft = 6;
 // Start the game
 
 console.log("--------------------\n")
-console.log("Guess MLB team names:\n")
+console.log("Guess MLB team names:\n".bold.blue)
 
 function startGame() {
     
@@ -65,22 +66,22 @@ function startGame() {
 
                         wordGenerate.array.forEach(wordCheck);
                         if (wordCheckArray.join('') === wordComplete.join('')) {
-                            console.log("\nIncorrect.\n");
+                            console.log("\nIncorrect! Keep trying..\n".red);
                           
                             incorrectLetters.push(input.userinput);
                             guessesLeft--;
 
                         } else {
-                            console.log("\nCorrect!\n");
+                            console.log("\nCorrect! Keep going..\n".green);
                             
                             correctLetters.push(input.userinput);
                         }
 
                         wordGenerate.display();
 
-                        console.log("Guesses Left: " + guessesLeft + "\n");
+                        console.log("Guesses Left: ".bold + guessesLeft + "\n");
 
-                        console.log("Letters Guessed: " + incorrectLetters.join(" ") + "\n");
+                        console.log("Letters Guessed: ".bold + incorrectLetters.join(" ") + "\n");
 
                         if (guessesLeft > 1) {
 
@@ -100,7 +101,7 @@ function startGame() {
                 }
             })
     } else {
-        console.log("CONGRATS! You guessed correctly.\n");
+        console.log("CONGRATS! You guessed correctly.\n".bold.cyan);
 
         restartGame();
     }
@@ -117,7 +118,7 @@ function restartGame() {
             {
                 type: "confirm",
                 name: "restart",
-                message: "Would you like to play again?"
+                message: "Would you like to play again?".bold
 
             }
             
@@ -134,7 +135,7 @@ function restartGame() {
                 startGame();
                 
             } else {
-                return  console.log("\nYou're OUT!");
+                return  console.log("\nYou're OUT!".bold.cyan);
     
             }
         })
