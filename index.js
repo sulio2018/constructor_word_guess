@@ -27,8 +27,8 @@ function startGame() {
     
     if (getWord) {
 
-        var randomIndex = Math.floor(Math.random() * teams.length);
-        var randomWord = teams[randomIndex];
+        randomIndex = Math.floor(Math.random() * teams.length);
+        randomWord = teams[randomIndex];
              
         wordGenerate = new Word(randomWord);
       
@@ -87,7 +87,8 @@ function startGame() {
                             startGame();
 
                         } else {
-                            console.log("Better luck nex time!\n");
+                            console.log("You have 0 guesses left. Better luck next time!\n");
+                            console.log("The correct word was: " + randomWord + ".\n");
 
                             restartGame();
                         }
