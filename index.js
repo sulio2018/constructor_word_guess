@@ -26,6 +26,9 @@ console.log("Guess MLB team names:\n")
 function startGame() {
     
     if (getWord) {
+
+        var randomIndex = Math.floor(Math.random() * teams.length);
+        var randomWord = teams[randomIndex];
              
         wordGenerate = new Word(randomWord);
       
@@ -79,7 +82,7 @@ function startGame() {
 
                         console.log("Letters Guessed: " + incorrectLetters.join(" ") + "\n");
 
-                        if (guessesLeft > 0) {
+                        if (guessesLeft > 1) {
 
                             startGame();
 
@@ -123,7 +126,7 @@ function restartGame() {
                 getWord = true;
                 incorrectLetters = [];
                 correctLetters = [];
-                guessesLeft = 10;
+                guessesLeft = 6;
  
                 console.log("\n")
 
